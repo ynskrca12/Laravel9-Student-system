@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[StudentController::class,'index']);
 
 Route::get('/users',[UserController::class,'index'])->name('login');
 Route::get('/user/{id}',[UserController::class,'show'])->middleware('auth');
+
+Route::get('/students',[StudentController::class,'index']);
+Route::get('/students/{id}',[StudentController::class,'show']);
