@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +20,15 @@ use App\Http\Controllers\StudentController;
 //     return view('welcome');
 // });
 
+//Common routes naming
+//index - show all datas or students
+//show - show a single data or student
+//create - show a form to a new user
+//store - store  a data
+//edit - show form to a data
+//update - update a data
+//destroy - delete a data
+
 Route::get('/',[StudentController::class,'index']);
-
-Route::get('/users',[UserController::class,'index'])->name('login');
-Route::get('/user/{id}',[UserController::class,'show'])->middleware('auth');
-
-Route::get('/students',[StudentController::class,'index']);
-Route::get('/students/{id}',[StudentController::class,'show']);
+Route::get('/register',[UserController::class,'register']);
+Route::get('/login',[UserController::class,'login']);
