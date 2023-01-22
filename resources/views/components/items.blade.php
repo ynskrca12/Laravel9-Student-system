@@ -1,11 +1,14 @@
 <ul class="flex flex-col md:flex-row p-4">
     <li>
-        <a href="#" class="block py-2 pr-4 pl-3">Sign In</a>
+        <a href="/login" class="block py-2 pr-4 pl-3">Sign In</a>
     </li>
     <li>
-        <a href="#" class="block py-2 pr-4 pl-3">Sign Up</a>
+        <a href="/register" class="block py-2 pr-4 pl-3">Sign Up</a>
     </li>
     <li>
-        <a href="#" class="block py-2 pr-4 pl-3">Logout</a>
+        <form action="/logout" method="POST">
+            @csrf
+        <button class="block py-2 pr-4 pl-3">Logout</button>
+    </form>
     </li>
 </ul>
