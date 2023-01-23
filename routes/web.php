@@ -29,11 +29,21 @@ use App\Http\Controllers\StudentController;
 //update - update a data
 //destroy - delete a data
 
-Route::get('/',[StudentController::class,'index'])->middleware('auth');
-Route::get('/register',[UserController::class,'register']);
+Route::controller(UserController::class)->group(function(){
+    Route::get('/register','register');
+    Route::get('/login','login')->name('login')->middleware('guest');
+    Route::post('/login/process','process');
+    Route::post('/logout','logout');
+    Route::post('/store','store');
+});
 
-Route::get('/login',[UserController::class,'login'])->name('login')->middleware('guest');
-Route::post('/login/process',[UserController::class,'process']);
+Route::controller(StudentController::class)->group(function() {
+    Route::get('/','index')->middleware('auth');
+    Route::get('/add/student','create');
+    Route::post('/add/student','store');
+    Route::get('/student/{id}','show');
+    Route::put('/student/{student}','update');
+    Route::delete('/student/{student}','destroy');
 
-Route::post('/logout',[UserController::class,'logout']);
-Route::post('/store',[UserController::class,'store']);
+});
+

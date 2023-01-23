@@ -1,6 +1,6 @@
 @include('partials.header')
-<?php $array = array('title' => 'Student System') ;?>
-<x-nav :data="$array"/>
+<?php $array = ['title' => 'Student System']; ?>
+<x-nav :data="$array" />
 
 
 <header class="max-w-lg mx-auto mt-10">
@@ -25,6 +25,9 @@
                     <th scope="col" class="py-3 px-6">
                         Age
                     </th>
+                    <th scope="col">
+
+                    </th>
                 </tr>
             </thead>
 
@@ -43,10 +46,16 @@
                         <td class="py-4 px-6">
                             {{ $student->age }}
                         </td>
+                        <td class="py-4 px-6">
+                            <a href="/student/{{$student->id}}"
+                            class="bg-sky-600 text-white px-4 py-1 rounded">View</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="mx-auto max-w-lg pt-6 p-4"></div>
+        {{ $students->links() }}
     </div>
 </section>
 @include('partials.footer')
